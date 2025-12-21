@@ -1,8 +1,15 @@
 "use client";
+import swift from "../../../public/images/Swift Express.png";
+import Dragon from "../../../public/images/Dragon News.png";
+import Motor from "../../../public/images/Motor Garage.png";
+import Book from "../../../public/images/Book Vibe.png";
+import Peddy from "../../../public/images/Peddy.png";
+import Country from "../../../public/images/Country Viewer.png";
 
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { features } from "process";
 
 /**
  * Projects Section Component
@@ -12,71 +19,67 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
+      title: "Swift Express Cargo",
       description:
-        "Full-stack e-commerce solution with real-time inventory management, payment integration, and admin dashboard.",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "Stripe",
-        "PostgreSQL",
-        "Tailwind CSS",
-      ],
-      image: "https://via.placeholder.com/400x300?text=E-Commerce+Platform",
-      liveLink: "https://example.com",
-      githubLink: "https://github.com",
-      featured: true,
+        "Responsive Multi page built using HTML, Tailwind CSS & JavaScript. This project includes a courier service landing page with animated UI sections, fully mobile friendly layouts and optimized loading performance.",
+      technologies: ["HTML5", "Tailwind", "JavaScript", "Figma"],
+      image: swift,
+      liveLink: "https://bd-calling-project-03.vercel.app",
+      githubLink: "https://github.com/ranaIslam01/swift-express-cargo",
+      featured: false,
     },
     {
       id: 2,
-      title: "Task Management App",
+      title: "Dragon News",
       description:
-        "Collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.",
+        "Responsive news web app built with React, Tailwind CSS, and Firebase Authentication, featuring private routes, reusable components, and real-time toast notifications. Includes dynamic category-based news browsing.",
       technologies: ["React", "Firebase", "Framer Motion", "Tailwind CSS"],
-      image: "https://via.placeholder.com/400x300?text=Task+Management",
-      liveLink: "https://example.com",
-      githubLink: "https://github.com",
+      image: Dragon,
+      liveLink: "https://dragon-news-2-1d8e0.web.app/category/0",
+      githubLink: "https://github.com/ranaIslam01/dragon-news",
       featured: true,
     },
     {
       id: 3,
-      title: "Analytics Dashboard",
+      title: "Motor Garage",
       description:
-        "Real-time analytics dashboard with interactive charts, data visualization, and comprehensive reporting features.",
-      technologies: ["React", "D3.js", "Node.js", "MongoDB"],
-      image: "https://via.placeholder.com/400x300?text=Analytics+Dashboard",
-      liveLink: "https://example.com",
-      githubLink: "https://github.com",
+        "A modern and fully responsive auto-service website built with React and Tailwind CSS. It features dynamic service pages, a booking modal, blog section, contact form, and Google Maps integration — optimized for clean UI, fast performance, and seamless user experience.",
+      technologies: ["React", "Tailwind CSS", "Firebase", "Figma"],
+      image: Motor,
+      liveLink: "https://motor-garage.vercel.app/",
+      githubLink: "https://github.com/ranaIslam01/motor-garage",
+      featured: true,
     },
     {
       id: 4,
-      title: "Social Media App",
+      title: "Book Vibe",
       description:
-        "Full-featured social media platform with user authentication, real-time messaging, and media sharing capabilities.",
-      technologies: ["Next.js", "GraphQL", "PostgreSQL", "Socket.io"],
-      image: "https://via.placeholder.com/400x300?text=Social+Media+App",
-      liveLink: "https://example.com",
-      githubLink: "https://github.com",
+        "Book collection web app with API integration, clean UI & reusable components. Users can explore books with detailed pages, wishlist options, and dynamic page routing.",
+      technologies: ["React", "TailwindCss", "Axios", "Figma"],
+      image: Book,
+      liveLink: "https://book-vibe-blush.vercel.app/",
+      githubLink: "https://github.com/ranaIslam01/book-vibe",
+      featured: false,
     },
     {
       id: 5,
-      title: "AI Content Generator",
+      title: "Peddy",
       description:
-        "AI-powered content generation tool leveraging OpenAI API with caching and optimization strategies.",
-      technologies: ["Next.js", "OpenAI API", "Vercel", "TypeScript"],
-      image: "https://via.placeholder.com/400x300?text=AI+Content+Generator",
-      liveLink: "https://example.com",
-      githubLink: "https://github.com",
+        "Clean & responsive pet adoption website built using HTML, CSS & JavaScript. Includes pets listing, filtering options, and beautiful UI animations.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      image: Peddy,
+      liveLink: "https://peddy-xi.vercel.app/",
+      githubLink: "https://github.com/ranaIslam01/peddy",
     },
     {
       id: 6,
-      title: "Design System",
+      title: "Countries Viewer",
       description:
-        "Comprehensive component library and design system documentation for consistent UI/UX across products.",
-      technologies: ["React", "Storybook", "TypeScript", "Tailwind CSS"],
-      image: "https://via.placeholder.com/400x300?text=Design+System",
-      liveLink: "https://example.com",
-      githubLink: "https://github.com",
+        "Simple interactive countries viewer using REST Countries API. Includes search system and clean layout for browsing country details.",
+      technologies: ["HTML5", "CSS3", "JavaScript"],
+      image: Country,
+      liveLink: "https://countries-viewer.vercel.app/",
+      githubLink: "https://github.com/ranaIslam01/countries-viewer",
     },
   ];
 
