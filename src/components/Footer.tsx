@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Twitter, Mail, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, Phone } from "lucide-react";
 
 /**
  * Footer Component
