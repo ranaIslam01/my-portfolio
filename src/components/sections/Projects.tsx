@@ -1,15 +1,8 @@
 "use client";
-import swift from "../../../public/images/Swift Express.png";
-import Dragon from "../../../public/images/Dragon News.png";
-import Motor from "../../../public/images/Motor Garage.png";
-import Book from "../../../public/images/Book Vibe.png";
-import Peddy from "../../../public/images/Peddy.png";
-import Country from "../../../public/images/Country Viewer.png";
 
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import Image from "next/image";
-import { features } from "process";
 
 /**
  * Projects Section Component
@@ -23,7 +16,7 @@ export default function Projects() {
       description:
         "Responsive Multi page built using HTML, Tailwind CSS & JavaScript. This project includes a courier service landing page with animated UI sections, fully mobile friendly layouts and optimized loading performance.",
       technologies: ["HTML5", "Tailwind", "JavaScript", "Figma"],
-      image: swift,
+      image: "/images/swift-express.png",
       liveLink: "https://bd-calling-project-03.vercel.app",
       githubLink: "https://github.com/ranaIslam01/swift-express-cargo",
       featured: false,
@@ -34,7 +27,7 @@ export default function Projects() {
       description:
         "Responsive news web app built with React, Tailwind CSS, and Firebase Authentication, featuring private routes, reusable components, and real-time toast notifications. Includes dynamic category-based news browsing.",
       technologies: ["React", "Firebase", "Framer Motion", "Tailwind CSS"],
-      image: Dragon,
+      image: "/images/dragon-news.png",
       liveLink: "https://dragon-news-2-1d8e0.web.app/category/0",
       githubLink: "https://github.com/ranaIslam01/dragon-news",
       featured: true,
@@ -45,7 +38,7 @@ export default function Projects() {
       description:
         "A modern and fully responsive auto-service website built with React and Tailwind CSS. It features dynamic service pages, a booking modal, blog section, contact form, and Google Maps integration — optimized for clean UI, fast performance, and seamless user experience.",
       technologies: ["React", "Tailwind CSS", "Firebase", "Figma"],
-      image: Motor,
+      image: "/images/motor-garage.png",
       liveLink: "https://motor-garage.vercel.app/",
       githubLink: "https://github.com/ranaIslam01/motor-garage",
       featured: true,
@@ -56,7 +49,7 @@ export default function Projects() {
       description:
         "Book collection web app with API integration, clean UI & reusable components. Users can explore books with detailed pages, wishlist options, and dynamic page routing.",
       technologies: ["React", "TailwindCss", "Axios", "Figma"],
-      image: Book,
+      image: "/images/book-vibe.png",
       liveLink: "https://book-vibe-blush.vercel.app/",
       githubLink: "https://github.com/ranaIslam01/book-vibe",
       featured: false,
@@ -67,7 +60,7 @@ export default function Projects() {
       description:
         "Clean & responsive pet adoption website built using HTML, CSS & JavaScript. Includes pets listing, filtering options, and beautiful UI animations.",
       technologies: ["HTML5", "CSS3", "JavaScript"],
-      image: Peddy,
+      image: "/images/peddy.png",
       liveLink: "https://peddy-xi.vercel.app/",
       githubLink: "https://github.com/ranaIslam01/peddy",
     },
@@ -77,7 +70,7 @@ export default function Projects() {
       description:
         "Simple interactive countries viewer using REST Countries API. Includes search system and clean layout for browsing country details.",
       technologies: ["HTML5", "CSS3", "JavaScript"],
-      image: Country,
+      image: "/images/country-viewer.png",
       liveLink: "https://countries-viewer.vercel.app/",
       githubLink: "https://github.com/ranaIslam01/countries-viewer",
     },

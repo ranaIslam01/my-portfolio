@@ -1,48 +1,66 @@
+
 # Dependencies
 node_modules/
 .pnp
 .pnp.js
 
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Documentation (keep in repo)
 DOCUMENTATION.md
 EMAIL_SETUP.md
 FILE_MANIFEST.md
 GETTING_STARTED.md
 PROJECT_SUMMARY.md
 
-
-
 # Testing
 coverage/
+.nyc_output/
 
 # Next.js
 .next/
 out/
+dist/
 
 # Production
 build/
+.vercel/
+
+# Environment variables (NEVER commit these!)
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Public images
 
 # Misc
 .DS_Store
+Thumbs.db
 *.pem
+*.key
+*.cert
 
 # Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Local env files
-.env.local
-.env.*.local
-.env.example
-
-# Vercel
-.vercel
-
-# IDE
+# IDE & Editor
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS
-Thumbs.db
+# Logs
+logs/
+*.log
+
+# Caches
+.npm
+.eslintcache
+.stylelintcache
+
