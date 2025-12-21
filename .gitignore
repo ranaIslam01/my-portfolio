@@ -2,78 +2,46 @@
 node_modules/
 .pnp
 .pnp.js
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
+
+DOCUMENTATION.md
+EMAIL_SETUP.md
+FILE_MANIFEST.md
+GETTING_STARTED.md
+PROJECT_SUMMARY.md
+
+
 
 # Testing
 coverage/
-.nyc_output
 
 # Next.js
 .next/
 out/
-dist/
 
 # Production
 build/
-.vercel/
 
-# Environment variables (NEVER commit these!)
-.env
-.env.local
-.env.*.local
-.env.production.local
-
-# Misc & OS
+# Misc
 .DS_Store
-Thumbs.db
 *.pem
-*.key
-*.cert
 
-# IDE & Editor
-.vscode/
-.idea/
-.vs/
-.vscode-test/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-.project
-.settings/
-
-# Logs
-logs/
-*.log
+# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
 
-# Optional npm cache
-.npm
+# Local env files
+.env.local
+.env.*.local
 
-# Optional eslint cache
-.eslintcache
+# Vercel
+.vercel
 
-# Optional stylelint cache
-.stylelintcache
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# Mac
-.AppleDouble
-.LSOverride
-._*
-
-# Windows
-ehthumbs.db
-
-# VSCode extensions
-.vscode-test
-
+# OS
+Thumbs.db
