@@ -27,11 +27,14 @@ export const metadata: Metadata = {
     "next.js",
     "typescript",
   ],
-  authors: [{ name: "Your Name" }],
+  icons: {
+    icon: "/logo.png",
+  },
+  authors: [{ name: "Rana Islam" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://yourportfolio.com",
+    url: "https://my-portfolio-rana-islam.vercel.app",
     siteName: "Portfolio",
   },
 };
