@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Rana Islam",
+  title: "Rana Islam | Portfolio",
   description:
     "Showcasing my projects, skills, and professional experience as a fullstack developer.",
   keywords: [

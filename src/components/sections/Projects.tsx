@@ -1,246 +1,157 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { useState, useEffect, useCallback } from "react";
+import { projectsData, Project } from "@/data/projects"; // Path অনুযায়ী পরিবর্তন করুন
 
-/**
- * Projects Section Component
- * Showcase real-world projects with live demo and GitHub links
- */
 export default function Projects() {
-  const projects = [
-    {
-      id: 1,
-      title: "Swift Express Cargo",
-      description:
-        "Responsive Multi page built using HTML, Tailwind CSS & JavaScript. This project includes a courier service landing page with animated UI sections, fully mobile friendly layouts and optimized loading performance.",
-      technologies: ["HTML5", "Tailwind", "JavaScript", "Figma"],
-      image: "/images/swift-express.png",
-      liveLink: "https://bd-calling-project-03.vercel.app",
-      githubLink: "https://github.com/ranaIslam01/swift-express-cargo",
-      featured: false,
-    },
-    {
-      id: 2,
-      title: "Dragon News",
-      description:
-        "Responsive news web app built with React, Tailwind CSS, and Firebase Authentication, featuring private routes, reusable components, and real-time toast notifications. Includes dynamic category-based news browsing.",
-      technologies: ["React", "Firebase", "Framer Motion", "Tailwind CSS"],
-      image: "/images/dragon-news.png",
-      liveLink: "https://dragon-news-2-1d8e0.web.app/category/0",
-      githubLink: "https://github.com/ranaIslam01/dragon-news",
-      featured: true,
-    },
-    {
-      id: 3,
-      title: "Motor Garage",
-      description:
-        "A modern and fully responsive auto-service website built with React and Tailwind CSS. It features dynamic service pages, a booking modal, blog section, contact form, and Google Maps integration — optimized for clean UI, fast performance, and seamless user experience.",
-      technologies: ["React", "Tailwind CSS", "Firebase", "Figma"],
-      image: "/images/motor-garage.png",
-      liveLink: "https://motor-garage.vercel.app/",
-      githubLink: "https://github.com/ranaIslam01/motor-garage",
-      featured: true,
-    },
-    {
-      id: 4,
-      title: "Book Vibe",
-      description:
-        "Book collection web app with API integration, clean UI & reusable components. Users can explore books with detailed pages, wishlist options, and dynamic page routing.",
-      technologies: ["React", "TailwindCss", "Axios", "Figma"],
-      image: "/images/book-vibe.png",
-      liveLink: "https://book-vibe-blush.vercel.app/",
-      githubLink: "https://github.com/ranaIslam01/book-vibe",
-      featured: false,
-    },
-    {
-      
-      id: 5,
-      title: "Peddy",
-      description:
-        "Clean & responsive pet adoption website built using HTML, CSS & JavaScript. Includes pets listing, filtering options, and beautiful UI animations.",
-      technologies: ["HTML5", "CSS3", "JavaScript"],
-      image: "/images/peddy.png",
-      liveLink: "https://peddy-xi.vercel.app/",
-      githubLink: "https://github.com/ranaIslam01/peddy",
-    },
-    {
-      id: 6,
-      title: "Countries Viewer",
-      description:
-        "Simple interactive countries viewer using REST Countries API. Includes search system and clean layout for browsing country details.",
-      technologies: ["HTML5", "CSS3", "JavaScript"],
-      image: "/images/country-viewer.png",
-      liveLink: "https://countries-viewer.vercel.app/",
-      githubLink: "https://github.com/ranaIslam01/countries-viewer",
-    },
-  ];
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
+  const featuredProjects = projectsData.filter((p) => p.featured);
+  const moreProjects = projectsData.filter((p) => !p.featured);
+  
+  const totalSlides = Math.ceil(moreProjects.length / itemsPerSlide);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
+  // Responsive logic
+  useEffect(() => {
+    const updateItems = () => {
+      const w = window.innerWidth;
+      if (w < 640) setItemsPerSlide(1);
+      else if (w < 1024) setItemsPerSlide(2);
+      else setItemsPerSlide(3);
+    };
+    updateItems();
+    window.addEventListener("resize", updateItems);
+    return () => window.removeEventListener("resize", updateItems);
+  }, []);
+
+  const handleNext = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  }, [totalSlides]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  }, [totalSlides]);
+
+  const visibleProjects = moreProjects.slice(
+    currentSlide * itemsPerSlide,
+    currentSlide * itemsPerSlide + itemsPerSlide
+  );
 
   return (
-    <section
-      id="projects"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-light-card dark:bg-dark-card"
-    >
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-light-card dark:bg-dark-card overflow-hidden">
       <div className="container mx-auto max-w-6xl">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Featured Projects
-            </h2>
-            <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
-            <p className="text-light-muted dark:text-dark-muted mt-4 max-w-2xl">
-              Here are some of my recent projects showcasing my skills and
-              expertise in web development.
-            </p>
-          </motion.div>
+        
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Featured Projects</h2>
+          <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full" />
+        </div>
 
-          {/* Featured Projects */}
-          <motion.div variants={containerVariants} className="space-y-12 mb-16">
-            {projects
-              .filter((p) => p.featured)
-              .map((project) => (
-                <motion.div
-                  key={project.id}
-                  variants={itemVariants}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-                >
-                  <div className="relative h-80 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-primary transition-colors">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-3xl font-bold mb-3">{project.title}</h3>
-                    <p className="text-light-muted dark:text-dark-muted mb-6 text-lg leading-relaxed">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-4">
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-blue-600 transition-all flex items-center gap-2 glow-effect"
-                      >
-                        <ExternalLink size={20} />
-                        Live Demo
-                      </a>
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-6 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary hover:text-white transition-all flex items-center gap-2"
-                      >
-                        <Github size={20} />
-                        Code
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-          </motion.div>
+        {/* Featured List */}
+        <div className="space-y-20 mb-24">
+          {featuredProjects.map((project) => (
+            <FeaturedCard key={project.id} project={project} />
+          ))}
+        </div>
 
-          {/* All Projects Grid */}
-          <div>
-            <h3 className="text-2xl font-bold mb-8">More Projects</h3>
-            <motion.div
-              variants={containerVariants}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {projects
-                .filter((p) => !p.featured)
-                .map((project) => (
-                  <motion.div
-                    key={project.id}
-                    variants={itemVariants}
-                    className="group bg-light-bg dark:bg-dark-bg rounded-lg border border-gray-200 dark:border-gray-800 p-6 hover:border-primary transition-all duration-300 hover:shadow-lg hover:-translate-y-2"
-                  >
-                    <div className="relative h-48 rounded-lg overflow-hidden mb-4 border border-gray-200 dark:border-gray-800">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                    <h4 className="text-xl font-bold mb-2">{project.title}</h4>
-                    <p className="text-light-muted dark:text-dark-muted text-sm mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.slice(0, 3).map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex gap-2">
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2 bg-primary text-white rounded text-sm font-semibold hover:bg-blue-600 transition-all flex items-center justify-center gap-1"
-                      >
-                        <ExternalLink size={16} />
-                        Demo
-                      </a>
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2 border border-primary text-primary rounded text-sm font-semibold hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-1"
-                      >
-                        <Github size={16} />
-                        Code
-                      </a>
-                    </div>
-                  </motion.div>
-                ))}
-            </motion.div>
+        {/* More Projects Slider */}
+        <div className="mt-20">
+          <div className="flex justify-between items-center mb-8">
+            <h3 className="text-2xl font-bold">More Creations</h3>
+            <div className="flex gap-2">
+               <button onClick={handlePrev} className="p-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all">
+                <ChevronLeft size={20} />
+              </button>
+              <button onClick={handleNext} className="p-2 rounded-full border border-primary text-primary hover:bg-primary hover:text-white transition-all">
+                <ChevronRight size={20} />
+              </button>
+            </div>
           </div>
-        </motion.div>
+
+          {/* AnimatePresence for smooth sliding */}
+          <div className="relative min-h-[400px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                {visibleProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+// --- Sub-components for better organization ---
+
+function FeaturedCard({ project }: { project: Project }) {
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
+      <div className="group relative h-80 rounded-xl overflow-hidden shadow-xl">
+        <Image 
+          src={project.image} 
+          alt={project.title} 
+          fill 
+          className="object-cover group-hover:scale-105 transition-transform duration-700"
+        />
+      </div>
+      <div>
+        <h3 className="text-3xl font-bold mb-4">{project.title}</h3>
+        <p className="text-light-muted dark:text-dark-muted mb-6 text-lg">{project.description}</p>
+        <div className="flex flex-wrap gap-2 mb-8">
+          {project.technologies.map(tech => (
+            <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-semibold uppercase tracking-wider">
+              {tech}
+            </span>
+          ))}
+        </div>
+        <div className="flex gap-4">
+          <a href={project.liveLink} target="_blank" className="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+            <ExternalLink size={18} /> Live Demo
+          </a>
+          <a href={project.githubLink} target="_blank" className="flex items-center gap-2 border border-primary text-primary px-6 py-2 rounded-lg font-medium hover:bg-primary/5 transition-colors">
+            <Github size={18} /> Code
+          </a>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <div className="bg-white dark:bg-gray-900 rounded-xl p-5 border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-300 group">
+      <div className="relative h-44 rounded-lg overflow-hidden mb-4">
+        <Image src={project.image} alt={project.title} fill className="object-cover" />
+      </div>
+      <h4 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h4>
+      <p className="text-sm text-light-muted dark:text-dark-muted line-clamp-2 mb-4">{project.description}</p>
+      <div className="flex gap-3 mt-auto">
+        <a href={project.liveLink} className="text-primary hover:underline text-sm font-bold flex items-center gap-1">
+          Demo <ExternalLink size={14} />
+        </a>
+        <a href={project.githubLink} className="text-gray-500 hover:text-primary text-sm font-bold flex items-center gap-1">
+          Code <Github size={14} />
+        </a>
+      </div>
+    </div>
   );
 }
