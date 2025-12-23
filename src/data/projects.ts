@@ -66,7 +66,7 @@ export const projectsData: Project[] = [
     image: "/images/peddy.png",
     liveLink: "https://peddy-xi.vercel.app/",
     githubLink: "https://github.com/ranaIslam01/peddy",
-    featured: false, // যোগ করা হয়েছে
+    featured: false,
   },
   {
     id: 6,
@@ -77,7 +77,7 @@ export const projectsData: Project[] = [
     image: "/images/country-viewer.png",
     liveLink: "https://countries-viewer.vercel.app/",
     githubLink: "https://github.com/ranaIslam01/countries-viewer",
-    featured: false, // যোগ করা হয়েছে
+    featured: false,
   },
   {
     id: 7,
