@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
 
 /**
  * ThemeProvider Component
@@ -16,7 +15,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
+      "(prefers-color-scheme: dark)",
     ).matches;
     const shouldBeDark = savedTheme ? savedTheme === "dark" : prefersDark;
 
@@ -44,31 +43,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   if (!mounted) return <>{children}</>;
 
-  return (
-    <div data-theme-provider>
-      {children}
-      <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
-    </div>
-  );
-}
-
-/**
- * ThemeToggle Button Component
- */
-function ThemeToggle({
-  isDark,
-  onToggle,
-}: {
-  isDark: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <button
-      onClick={onToggle}
-      className="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-      aria-label="Toggle theme"
-    >
-      {isDark ? <Sun size={20} /> : <Moon size={20} />}
-    </button>
-  );
+  return <>{children}</>;
 }

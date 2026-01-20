@@ -2,21 +2,60 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Moon, Sun } from "lucide-react";
+import { useState, useEffect } from "react";
 
 /**
  * Header / Navigation Component
- * Sticky navigation with smooth scroll to sections
+ * Sticky navigation with smooth scroll to sections and theme toggle
  */
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+
+  // Initialize theme from localStorage or system preference
+  useEffect(() => {
+    setMounted(true);
+
+    const storedTheme = localStorage.getItem("theme") as
+      | "light"
+      | "dark"
+      | null;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+
+    const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+    setTheme(initialTheme);
+
+    // Apply theme to document
+    applyTheme(initialTheme);
+  }, []);
+
+  const applyTheme = (newTheme: "light" | "dark") => {
+    const html = document.documentElement;
+
+    if (newTheme === "dark") {
+      html.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      html.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    applyTheme(newTheme);
+  };
 
   const navItems = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
-    // { label: "Education", href: "#education" },
+    { label: "Education", href: "#education" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
@@ -39,7 +78,7 @@ export default function Header() {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex gap-8 items-center">
           {navItems.map((item, index) => (
             <motion.a
               key={item.href}
@@ -52,16 +91,51 @@ export default function Header() {
               {item.label}
             </motion.a>
           ))}
+
+          {/* Theme Toggle Button */}
+          {mounted && (
+            <motion.button
+              onClick={toggleTheme}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2.5 rounded-lg bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors duration-300 border border-gray-200 dark:border-gray-800"
+              aria-label="Toggle theme"
+              title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            >
+              {theme === "dark" ? (
+                <Sun size={20} className="text-yellow-500" />
+              ) : (
+                <Moon size={20} className="text-gray-700" />
+              )}
+            </motion.button>
+          )}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900"
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Menu Button and Theme Toggle */}
+        <div className="md:hidden flex items-center gap-3">
+          {mounted && (
+            <motion.button
+              onClick={toggleTheme}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? (
+                <Sun size={20} className="text-yellow-500" />
+              ) : (
+                <Moon size={20} className="text-gray-700" />
+              )}
+            </motion.button>
+          )}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Navigation */}

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone, Facebook, Heart } from "lucide-react";
-import Link from "next/link";
 
 /**
  * Footer Component

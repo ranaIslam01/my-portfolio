@@ -52,7 +52,10 @@ export default function Hero() {
       }, 2500);
     }
 
-    return () => clearInterval(timer) || clearTimeout(timer);
+    return () => {
+      clearInterval(timer);
+      clearTimeout(timer);
+    };
   }, [displayText, isTyping]);
 
   const containerVariants = {

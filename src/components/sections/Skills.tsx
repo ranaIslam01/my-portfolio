@@ -38,11 +38,9 @@ export default function Skills() {
     {
       title: "Other Skills",
       skills: [
-        "UI/UX Design",
         "SEO",
         "Performance Optimization",
         "Testing",
-        "Agile",
         "Linux",
       ],
     },
