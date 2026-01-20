@@ -13,10 +13,12 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
+    { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
+    // { label: "Education", href: "#education" },
     { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
-    // { label: "Testimonials", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -32,7 +34,7 @@ export default function Header() {
           transition={{ duration: 0.5 }}
         >
           <Link href="/" className="text-2xl font-bold gradient-text">
-            Portfolio
+            Rana Islam
           </Link>
         </motion.div>
 

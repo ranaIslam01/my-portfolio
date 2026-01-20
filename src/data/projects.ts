@@ -22,14 +22,14 @@ export const projectsData: Project[] = [
     image: "/images/swift-express.png",
     liveLink: "https://bd-calling-project-03.vercel.app",
     githubLink: "https://github.com/ranaIslam01/swift-express-cargo",
-    featured: false,
+    featured: true,
   },
   {
     id: 2,
     title: "Dragon News",
     description:
       "Responsive news web app built with React, Tailwind CSS, and Firebase Authentication, featuring private routes, reusable components, and real-time toast notifications. Includes dynamic category-based news browsing.",
-    technologies: ["React", "Firebase", "Framer Motion", "Tailwind CSS"],
+    technologies: ["React", "Firebase", "Figma", "Tailwind CSS"],
     image: "/images/dragon-news.png",
     liveLink: "https://dragon-news-2-1d8e0.web.app/category/0",
     githubLink: "https://github.com/ranaIslam01/dragon-news",
@@ -97,6 +97,6 @@ export const projectsData: Project[] = [
     liveLink: "https://coffee-store-client-eta-one.vercel.app/",
     githubLink: "https://github.com/ranaIslam01/coffee-store-client",
     serverLink: "https://github.com/ranaIslam01/coffee-store-server",
-    featured: true,
+    featured: false,
   },
 ];

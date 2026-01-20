@@ -43,7 +43,7 @@ export default function Contact() {
   ];
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -80,7 +80,7 @@ export default function Contact() {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert(
-        error instanceof Error ? error.message : "ইমেইল পাঠাতে সমস্যা হয়েছে"
+        error instanceof Error ? error.message : "ইমেইল পাঠাতে সমস্যা হয়েছে",
       );
     } finally {
       setIsLoading(false);
@@ -109,9 +109,12 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-light-card dark:bg-dark-card"
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
     >
-      <div className="container mx-auto max-w-5xl">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5"></div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -119,12 +122,11 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="mb-12 text-center">
+          <motion.div variants={itemVariants} className="mb-16 text-center">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Get In Touch
+              <span className="gradient-text">Get In Touch</span>
             </h2>
-            <div className="w-12 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto" />
-            <p className="text-light-muted dark:text-dark-muted mt-4 max-w-2xl mx-auto">
+            <p className="text-lg text-light-muted dark:text-dark-muted mt-4 max-w-2xl mx-auto">
               Have a question or want to collaborate? Feel free to reach out.
               I'm always open to discussing new projects and opportunities.
             </p>
@@ -139,21 +141,23 @@ export default function Contact() {
                   <motion.a
                     key={index}
                     href={method.href}
+                    target={method.target}
+                    rel={method.rel}
                     variants={itemVariants}
-                    className="group p-6 bg-light-bg dark:bg-dark-bg rounded-lg border border-gray-200 dark:border-gray-800 hover:border-primary transition-all duration-300 hover:shadow-lg"
+                    className="group p-6 bg-light-card dark:bg-dark-card rounded-lg border border-gray-200 dark:border-gray-800 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary group-hover:text-white transition-all">
+                      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         <Icon
                           size={24}
-                          className="text-primary group-hover:text-white"
+                          className="text-primary group-hover:text-white transition-colors duration-300"
                         />
                       </div>
                       <div>
-                        <h4 className="font-bold text-lg mb-1">
+                        <h4 className="font-bold text-lg mb-1 text-light-text dark:text-dark-text">
                           {method.label}
                         </h4>
-                        <p className="text-light-muted dark:text-dark-muted">
+                        <p className="text-light-muted dark:text-dark-muted text-sm">
                           {method.value}
                         </p>
                       </div>
@@ -167,12 +171,15 @@ export default function Contact() {
             <motion.form
               onSubmit={handleSubmit}
               variants={itemVariants}
-              className="lg:col-span-2 bg-light-bg dark:bg-dark-bg p-8 rounded-lg border border-gray-200 dark:border-gray-800"
+              className="lg:col-span-2 bg-light-card dark:bg-dark-card p-8 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-primary/30 transition-all duration-300"
             >
               <div className="space-y-6">
                 {/* Name Input */}
                 <div>
-                  <label htmlFor="name" className="block font-semibold mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block font-semibold mb-2 text-light-text dark:text-dark-text"
+                  >
                     Name
                   </label>
                   <input
@@ -182,14 +189,17 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-card border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-bg border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors text-light-text dark:text-dark-text placeholder-light-muted dark:placeholder-dark-muted"
                     placeholder="Your name"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label htmlFor="email" className="block font-semibold mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block font-semibold mb-2 text-light-text dark:text-dark-text"
+                  >
                     Email
                   </label>
                   <input
@@ -199,14 +209,17 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-card border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-bg border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors text-light-text dark:text-dark-text placeholder-light-muted dark:placeholder-dark-muted"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 {/* Subject Input */}
                 <div>
-                  <label htmlFor="subject" className="block font-semibold mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block font-semibold mb-2 text-light-text dark:text-dark-text"
+                  >
                     Subject
                   </label>
                   <input
@@ -216,14 +229,17 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-card border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-bg border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors text-light-text dark:text-dark-text placeholder-light-muted dark:placeholder-dark-muted"
                     placeholder="What's this about?"
                   />
                 </div>
 
                 {/* Message Textarea */}
                 <div>
-                  <label htmlFor="message" className="block font-semibold mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block font-semibold mb-2 text-light-text dark:text-dark-text"
+                  >
                     Message
                   </label>
                   <textarea
@@ -233,7 +249,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-card border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-light-bg dark:bg-dark-bg border border-gray-200 dark:border-gray-800 focus:border-primary outline-none transition-colors resize-none text-light-text dark:text-dark-text placeholder-light-muted dark:placeholder-dark-muted"
                     placeholder="Tell me more about your project or inquiry..."
                   />
                 </div>
@@ -244,7 +260,7 @@ export default function Contact() {
                   disabled={isLoading || submitted}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full px-6 py-4 bg-primary text-white font-bold rounded-lg hover:bg-blue-600 transition-all duration-300 flex items-center justify-center gap-2 glow-effect disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full px-6 py-4 bg-primary text-white font-bold rounded-lg hover:bg-blue-600 transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitted ? (
                     <>
