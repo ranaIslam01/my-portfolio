@@ -254,7 +254,9 @@ export default function Hero() {
               </motion.a>
 
               <motion.a
-                href="#contact"
+                href="/CV/Rana Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
