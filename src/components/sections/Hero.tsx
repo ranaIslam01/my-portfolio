@@ -23,14 +23,13 @@ export default function Hero() {
   const [isTyping, setIsTyping] = useState(true);
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
 
-  const roles = [
-    "MERN Stack Specialist",
-    "Web Designer",
-    "Full Stack Developer",
-  ];
-
   // Typing animation
   useEffect(() => {
+    const roles = [
+      "MERN Stack Specialist",
+      "Web Designer",
+      "Full Stack Developer",
+    ];
     const currentRole = roles[displayText];
     let index = 0;
     let timer: NodeJS.Timeout;
@@ -347,8 +346,9 @@ export default function Hero() {
                     src="/images/rana.jpg"
                     alt="Rana Islam"
                     fill
-                    className="object-cover"
                     priority
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover"
                   />
                 </div>
               </motion.div>
