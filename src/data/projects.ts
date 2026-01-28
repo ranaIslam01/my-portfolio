@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
     title: "Swift Express Cargo",
     description:
       "Responsive Multi page built using HTML, Tailwind CSS & JavaScript. This project includes a courier service landing page with animated UI sections, fully mobile friendly layouts and optimized loading performance.",
-    technologies: ["HTML5", "Tailwind", "JavaScript", "Figma"],
+    technologies: ["HTML5", "Css3", "JavaScript", "Figma"],
     image: "/images/swift-express.png",
     liveLink: "https://bd-calling-project-03.vercel.app",
     githubLink: "https://github.com/ranaIslam01/swift-express-cargo",
@@ -33,14 +33,14 @@ export const projectsData: Project[] = [
     image: "/images/dragon-news.png",
     liveLink: "https://dragon-news-2-1d8e0.web.app/category/0",
     githubLink: "https://github.com/ranaIslam01/dragon-news",
-    featured: true,
+    featured: false,
   },
   {
     id: 3,
     title: "Motor Garage",
     description:
       "A modern and fully responsive auto-service website built with React and Tailwind CSS. It features dynamic service pages, a booking modal, blog section, contact form, and Google Maps integration — optimized for clean UI, fast performance, and seamless user experience.",
-    technologies: ["React", "Tailwind CSS", "Firebase", "Figma"],
+    technologies: ["React", "Tailwind CSS", "JavaScript", "Figma"],
     image: "/images/motor-garage.png",
     liveLink: "https://motor-garage.vercel.app/",
     githubLink: "https://github.com/ranaIslam01/motor-garage",
@@ -99,4 +99,46 @@ export const projectsData: Project[] = [
     serverLink: "https://github.com/ranaIslam01/coffee-store-server",
     featured: false,
   },
+  {
+    id: 8,
+    title: "Career Code",
+    description:
+      "A modern, full-featured job portal application built with React that connects job seekers with employers. This platform offers a seamless experience for job searching, application management, and job posting with Bengali language support.",
+    technologies: [
+      "React",
+      "Firebase",
+      "Axios",
+      "Tailwind CSS",
+      "MongoDB",
+      "ExpressJS",
+      "NodeJS",
+    ],
+    image: "/images/carrer-code.png",
+    liveLink: "https://job-portal-client-rana.vercel.app/",
+    githubLink: "https://github.com/ranaIslam01/job-portal-client",
+    serverLink: "https://github.com/ranaIslam01/job-portal-server",
+    featured: true,
+  },
+  // {
+  //   id: 9,
+  //   title: "Zap Shift - Client",
+  //   description:
+  //     "A modern parcel delivery and logistics platform built with React that provides seamless service for both customers and riders.",
+  //   technologies: [
+  //     "React",
+  //     "Firebase",
+  //     "Axios",
+  //     "Tailwind CSS",
+  //     "MongoDB",
+  //     "ExpressJS",
+  //     "NodeJS",
+  //   ],
+  //   image: "/images/carrer-code.png",
+  //   liveLink: "https://job-portal-client-rana.vercel.app/",
+  //   githubLink: "https://github.com/ranaIslam01/job-portal-client",
+  //   serverLink: "https://github.com/ranaIslam01/job-portal-server",
+  //   featured: true,
+  // },
+  
+
 ];
