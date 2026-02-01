@@ -35,7 +35,7 @@ export default function Contact() {
     {
       icon: MapPin,
       label: "Location",
-      value: "Rangpur, Bangladesh",
+      value: "Dinajpur Sadar, Bangladesh",
       href: "https://www.google.com/maps/place/Rangpur,+Bangladesh",
       target: "_blank",
       rel: "noopener noreferrer",
