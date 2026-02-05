@@ -13,10 +13,6 @@ import {
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-/**
- * Hero Section Component
- * Landing page with advanced animations and interactions
- */
 export default function Hero() {
   const [displayText, setDisplayText] = useState(0);
   const [typedText, setTypedText] = useState("");
@@ -343,7 +339,7 @@ export default function Hero() {
               >
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                   <Image
-                    src="/images/rana.jpg"
+                    src="/images/New photo.png"
                     alt="Rana Islam"
                     fill
                     priority
