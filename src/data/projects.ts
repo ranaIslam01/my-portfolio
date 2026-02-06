@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
     title: "Swift Express Cargo",
     description:
       "Responsive Multi page built using HTML, Tailwind CSS & JavaScript. This project includes a courier service landing page with animated UI sections, fully mobile friendly layouts and optimized loading performance.",
-    technologies: ["HTML5", "Css3", "JavaScript", "Figma"],
+    technologies: ["HTML5", "Tailwind Css", "JavaScript", "Figma"],
     image: "/images/swift-express.png",
     liveLink: "https://bd-calling-project-03.vercel.app",
     githubLink: "https://github.com/ranaIslam01/swift-express-cargo",

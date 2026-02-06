@@ -249,7 +249,7 @@ export default function Hero() {
               </motion.a>
 
               <motion.a
-                href="/CV/Rana Resume.pdf"
+                href="/CV/Rana_Islam_Frontend.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{
@@ -339,7 +339,7 @@ export default function Hero() {
               >
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                   <Image
-                    src='/public/images/heroPhoto.png'
+                    src='/images/heroPhoto.png'
                     alt="Rana Islam"
                     fill
                     priority

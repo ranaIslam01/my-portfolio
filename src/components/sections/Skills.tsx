@@ -25,22 +25,19 @@ export default function Skills() {
       skills: [
         "Node.js",
         "Express",
-        "PostgreSQL",
         "MongoDB",
         "REST APIs",
-        "GraphQL",
       ],
     },
     {
       title: "Tools & DevOps",
-      skills: ["Git", "Docker", "AWS", "GitHub Actions", "Vercel", "Firebase"],
+      skills: ["Git", "Figma", "Vercel", "Firebase"],
     },
     {
       title: "Other Skills",
       skills: [
         "SEO",
         "Performance Optimization",
-        "Testing",
         "Linux",
       ],
     },
@@ -119,8 +116,8 @@ export default function Skills() {
             <h3 className="text-2xl font-bold">Proficiency Levels</h3>
             {[
               { label: "React & Next.js", percentage: 95 },
-              { label: "TypeScript", percentage: 90 },
-              { label: "Backend Development", percentage: 85 },
+              { label: "TypeScript", percentage: 20 },
+              { label: "Backend Development", percentage: 50 },
               { label: "UI/UX Design", percentage: 80 },
             ].map((skill, index) => (
               <div key={index}>

@@ -80,8 +80,8 @@ export default function About() {
                 Background
               </h3>
               <p className="text-light-muted dark:text-dark-muted leading-relaxed">
-                I'm a Computer Science Engineering graduate from Thakurgaon
-                Polytechnic Institute, based in Dinajpur Sadar, Bangladesh. I
+                I am a Computer Science Engineering graduate from Thakurgaon
+                Polytechnic Institute. Currently, I live in Dhaka, Bangladesh. I
                 have completed my diploma and am passionate about creating
                 innovative web solutions using modern technologies.
               </p>
@@ -93,10 +93,16 @@ export default function About() {
                 What I Do
               </h3>
               <p className="text-light-muted dark:text-dark-muted leading-relaxed">
-                I specialize in full-stack web development using the MERN stack
-                (MongoDB, Express.js, React.js, Node.js). I love building
-                responsive, user-friendly applications that solve real-world
-                problems and provide excellent user experiences.
+                I am a Frontend Developer, primarily working with React. I enjoy
+                creating user-friendly and responsive interfaces. JavaScript,
+                HTML, and CSS are my daily tools. My core focus is on delivering
+                clean UI, great user experience, and high performance. In
+                addition to frontend development, I have experience building
+                REST APIs using Node.js and Express and integrating them into
+                React applications. This gives me a solid understanding of the
+                end-to-end flow of a project. My greatest strengths are learning
+                new technologies quickly and implementing them in real-world
+                projects.
               </p>
             </motion.div>
           </div>
