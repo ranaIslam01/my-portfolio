@@ -124,7 +124,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 overflow-hidden relative"
+      className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-20 overflow-hidden relative"
     >
       {/* Animated Background Elements */}
       <motion.div
@@ -339,7 +339,7 @@ export default function Hero() {
               >
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                   <Image
-                    src="/images/New photo.png"
+                    src='/public/images/heroPhoto.png'
                     alt="Rana Islam"
                     fill
                     priority
